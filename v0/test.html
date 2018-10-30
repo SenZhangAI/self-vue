@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test_vue</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        {{readme}}
+    </div>
+</body>
+<script type="text/javascript">
+     var vm = new Vue({
+        el: '#app',
+        data: {
+            title: 'hello world',
+            readme: 'a simple test data binding of Vue, using console.log to see '+
+            'what happened when created a obj in vue',
+            obj : {
+                a: 1
+            }
+        },
+        created : function() {
+            console.log(this.readme);
+            console.log(this.obj);
+        }
+    });
+</script>
+</html>
