@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test_defineProperty</title>
+</head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="app">
+        <h2>test defineProperty, see console</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    var Book = {}
+    var name = '';
+    Object.defineProperty(Book, 'name', {
+      // set hook
+      set: function (value) {
+        name = value;
+        console.log('你取了一个书名叫做' + value);
+      },
+      // get hook
+      get: function () {
+        return '《' + name + '》'
+      }
+    })
+
+    Book.name = 'vue权威指南';  // 你取了一个书名叫做vue权威指南
+    console.log(Book.name);  // 《vue权威指南》
+</script>
+</html>

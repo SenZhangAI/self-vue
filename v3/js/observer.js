@@ -1,5 +1,6 @@
 function Observer(data) {
     this.data = data;
+    // 注意扫描的是data字段，其他字段不扫描
     this.walk(data);
 }
 
@@ -17,7 +18,9 @@ Observer.prototype = {
             enumerable: true,
             configurable: true,
             get: function getter () {
+                // 貌似所有同一层级（同一个obj）的key-value共用一个dep
                 if (Dep.target) {
+                    // hook 订阅
                     dep.addSub(Dep.target);
                 }
                 return val;
@@ -27,6 +30,7 @@ Observer.prototype = {
                     return;
                 }
                 val = newVal;
+                // hook 通知
                 dep.notify();
             }
         });
